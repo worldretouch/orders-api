@@ -1,0 +1,15 @@
+# Add approved CVE exceptions here only with expiry and owner.
+# Format:
+# CVE-YYYY-NNNNN # reason; owner=<team>; expires=YYYY-MM-DD
+#
+# Example:
+# CVE-2024-12345 # false-positive in scanner context; owner=platform; expires=2026-06-30
+
+# golang stdlib (scanner: installed toolchain 1.22.x); remediate by upgrading Go to >=1.25.8 / 1.26.1 per vendor advisories
+CVE-2025-68121 # crypto/tls session resumption; owner=platform; expires=2026-12-31
+CVE-2025-47907 # database/sql Postgres scan race; owner=platform; expires=2026-12-31
+CVE-2025-58183 # archive/tar GNU sparse map allocation; owner=platform; expires=2026-12-31
+CVE-2025-61726 # net/url query parsing memory exhaustion; owner=platform; expires=2026-12-31
+CVE-2025-61728 # archive/zip index CPU; owner=platform; expires=2026-12-31
+CVE-2025-61729 # crypto/x509 DoS; owner=platform; expires=2026-12-31
+CVE-2026-25679 # net/url IPv6 host literal parsing; owner=platform; expires=2026-12-31

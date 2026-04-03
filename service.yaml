@@ -1,0 +1,11 @@
+service_name: orders-api
+runtime: go
+owner: dev_team
+domain: null
+description: |
+  null
+expose_http: true
+health_path: /health/ready
+dependencies:
+  database: false
+  redis: false

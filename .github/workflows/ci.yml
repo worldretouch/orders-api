@@ -1,0 +1,30 @@
+# Thin wrapper: calls the platform reusable workflow in platform-idp (rendered by make scaffold).
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Ceiling for the reusable workflow: platform-service.yml job `update-dev-values` needs
+# contents:write + pull-requests:write on main (GitOps PR to platform-env). Caller must allow it.
+permissions:
+  contents: write
+  pull-requests: write
+  packages: write
+  security-events: write
+  id-token: write
+
+jobs:
+  platform-ci:
+    uses: worldretouch/platform-idp/.github/workflows/platform-service.yml@main
+    with:
+      service_name: orders-api
+      runtime: go
+      env_repo: worldretouch/platform-env
+      platform_repo: worldretouch/platform-idp
+      platform_ref: main
+    secrets:
+      env_repo_token: ${{ secrets.ENV_REPO_TOKEN }}
